@@ -1,0 +1,25 @@
+{
+  "name": "hoang",
+  "version": "1.0.0",
+  "description": "123",
+  "main": "123",
+  "scripts": {
+    "test": "123"
+  },
+  "repository": {
+    "type": "git",
+    "url": "123"
+  },
+  "keywords": [
+    "123"
+  ],
+  "author": "123",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}
