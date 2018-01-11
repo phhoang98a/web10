@@ -1,6 +1,22 @@
-<div id="areaQues">
-    <p1>{{var1}}</p1>
-    <p2>{{var2}}</p2>
-    <p3> {{var3}} vote có và {{var4}} vote không</p3>
-    <a href="/vote"><button type="button">Xem câu hỏi khác</button></a>
+<div class="container" id="areaQues">     
+     <div class="row text-center">
+   
+              <h1>{{var1}}</h1>
+              <h2>{{var2}} vote</h2>
+              <div>
+              <div class="progress">
+                     
+                        <div id="result_no" class="progress-bar progress-bar-danger " style="width:{{var4}}%" >
+                             {{var4}}% 
+                             <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                        </div>
+                      
+                        <div id="result_yes"class="progress-bar progress-bar-primary" style="width:{{var3}}%">
+                            {{var3}}%
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        </div>
+              </div>
+              </div>
+              <a href="/vote"><button type="button" class="btn btn-success" >Xem câu hỏi khác</button></a>
+     </div>
 </div>

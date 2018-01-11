@@ -9,3 +9,22 @@
 #areaAsk textarea{
     width: 100%;
 }
+
+#areaQues h1{
+    margin-top:70px;
+    font-size: 37px;
+}
+#areaQues h2{
+    font-size: 24px;
+    margin-top:100px;
+    margin-bottom: 10px;
+}
+
+#areaQues button{
+    margin-top:50px;
+    border-radius: 5px 5px 5px 5px;
+    height:45px;
+    width: 180px;
+    font-size: 18px;
+}
+

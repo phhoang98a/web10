@@ -1,9 +1,11 @@
 <!doctype HTML>
 <html>
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">     
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">   
         <link rel="stylesheet" href="/otherAbout.css">   
     </head>
     <title>Hoang</title>
@@ -20,18 +22,24 @@
                    </div>
         </nav> 
          <div id="areaVote" class="container">
-              {{{body}}}
-              <form action="/questions" method="post">
-                      <input type="submit" value="no" name="NO" class="vote"/>
-                      <input type="submit" value="yes" name="YES" class="vote"/>
-              </form>
-              <div id="next">
-                  <form action="/questions" method="post">
-                      <input type="submit" value="Kết quả vote" name="result"/>
-                  </form>
-                  <a href="/vote"><input type="submit" value="Câu hỏi khác"/></a>
-              </div>    
-         </div>
+                        <div class="text-center"><h1>{{{body}}}</h1></div>
+                        <form action="/questions/{{variable2}}" method="post">
+                             <div class="row">
+                                    <div class="col-md-6 text-center">
+                                        <button type="submit" value="no" name="NO" class="btn btn-danger"><i class="fa fa-thumbs-o-down" aria-hidden="true">Sai/Không/Trái</i></button>
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <button type="submit" value="yes" name="YES"class="btn btn-primary"><i class="fa fa-thumbs-o-up" aria-hidden="true">Đúng/Có/Phải</i></button>  
+                                    </div>
+                             </div>
+                        </form>
+                        <div id="next" class="text-center">
+                            <form action="/questions/{{variable2}}" method="post">
+                                <button type="submit" value="Kết quả vote" name="result" class="btn btn-default">Kết quả vote</button>
+                            </form>
+                            <a href="/vote"><button type="submit" class="btn btn-default ">Câu hỏi khác</button></a>
+                        </div>             
+         </div> 
 
 
     </body>
