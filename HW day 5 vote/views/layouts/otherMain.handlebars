@@ -1,0 +1,30 @@
+<!doctype HTML>
+<html>
+    <head>
+        <link rel="stylesheet" href="/otherAbout.css">
+    </head>
+    <title>Hoang</title>
+    <body>
+         <div id="menu"> 
+              <div id="item1">
+                <a href="/"> <img src="./ava.jpg" width="50px" height="40px"/></a>
+              </div>
+              <div class="item" id="item2"><p><a href="/ask">Hỏi nào</a></p></div>
+              <div class="item" id="item3"><p><a href="/vote">Vote nào</a></p></div> 
+         </div>
+         
+         <div id="areaVote">
+              {{{body}}}
+              <form action="/questions/{{variable2}}" method="post">
+                      <input type="submit" value="no" name="NO" class="vote"/>
+                      <input type="submit" value="yes" name="YES" class="vote"/>
+              </form>
+              <div id="next">
+                  <form action="/questions/{{variable2}}" method="post">
+                      <input type="submit" value="Kết quả vote" name="result"/>
+                  </form>
+                  <a href="/vote"><input type="submit" value="Câu hỏi khác"/></a>
+              </div>    
+         </div>
+    </body>
+</html>

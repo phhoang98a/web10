@@ -1,0 +1,120 @@
+body{
+    margin:0;
+}
+
+
+#menu{
+    width: font: 1em sans-serif;;
+    height:40px;
+    background-color:#CC6633;
+    position: relative;
+}
+
+#menu #item1
+{ 
+    position: absolute;
+    display: inline-block; 
+    margin-left: 30px;
+     
+}
+
+img{
+    border-radius: 90px 90px 90px 90px;
+}
+
+#menu #item2
+{
+    position: absolute;
+    display: inline-block; 
+    width:100px;
+    height:40px;
+    left:550px;
+}
+
+#menu #item3
+{ 
+    position: absolute;
+    display: inline-block; 
+    width:100px;
+    height:40px;
+    left:700px;
+}
+
+#menu p{
+    font-size: 20px;
+    padding-left: 10px;
+    line-height: 0px;
+}
+
+#menu a{
+    color: black;
+    text-decoration: none;
+}
+
+#menu .item:hover{
+    background-color: #CC6600;
+    cursor: pointer;
+}
+
+#menu #item1:hover{
+    cursor: pointer;
+}
+
+#main{
+    width: font: 1em sans-serif;;
+    height:1000px;
+    position: relative;
+}
+
+#main img
+{
+    margin-left:130px;
+    margin-top: 30px;
+}
+
+#main #item1{
+    position: relative; 
+    float: right;
+    right:400px;
+    font-size: 50px;
+    width: 300px;
+    margin-top: 30px;
+}
+
+#areaVote{
+    margin: auto;
+    width: 1000px;
+    height: 500px;
+    position: relative;
+}
+
+#areaVote .vote{
+    display: inline-block; 
+    width: 200px;
+    height: 40px;
+    margin-left: 200px;
+    font-size: 20px;
+    border-radius: 10px 10px 10px 10px;
+    margin-bottom: 30px;
+}
+
+
+#areaVote #next input{
+    text-align: center;
+    margin-left:400px; 
+    width: 200px;
+    height: 30px;
+}
+
+#areaVote input:hover{
+    background-color: #CCCCCC;
+    cursor: pointer;
+}
+
+#areaVote p{
+    display: block;
+    width: 1000px;
+    height: 100px;
+    text-align: center;
+    font-size: 25px;
+}

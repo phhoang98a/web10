@@ -1,0 +1,11 @@
+#main p{
+    font-size: 70px;
+}
+
+#areaAsk p{
+    font-size: 36px;
+}
+
+#areaAsk textarea{
+    width: 100%;
+}

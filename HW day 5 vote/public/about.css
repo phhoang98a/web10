@@ -1,0 +1,146 @@
+body{
+    margin:0;
+}
+
+
+#menu{
+    width: font: 1em sans-serif;;
+    height:40px;
+    background-color:#CC6633;
+    position: relative;
+}
+
+#menu #item1
+{ 
+    position: absolute;
+    display: inline-block; 
+    margin-left: 30px;
+     
+}
+
+img{
+    border-radius: 90px 90px 90px 90px;
+}
+
+#menu #item2
+{
+    position: absolute;
+    display: inline-block; 
+    width:100px;
+    height:40px;
+    left:550px;
+}
+
+#menu #item3
+{ 
+    position: absolute;
+    display: inline-block; 
+    width:100px;
+    height:40px;
+    left:700px;
+}
+
+#menu p{
+    font-size: 20px;
+    padding-left: 10px;
+    line-height: 0px;
+}
+
+#menu a{
+    color: black;
+    text-decoration: none;
+}
+
+#menu .item:hover{
+    background-color: #CC6600;
+    cursor: pointer;
+}
+
+#menu #item1:hover{
+    cursor: pointer;
+}
+
+#main{
+    width: font: 1em sans-serif;;
+    height:1000px;
+    position: relative;
+}
+
+#main img
+{
+    margin-left:130px;
+    margin-top: 30px;
+}
+
+#main #item1{
+    position: relative; 
+    float: right;
+    right:400px;
+    font-size: 50px;
+    width: 300px;
+    margin-top: 30px;
+}
+
+#areaAsk{
+    margin: auto;
+    width: 1000px;
+    height: 500px;
+}
+
+#areaAsk p{
+    font-size: 35px;
+}
+
+#areaAsk textarea{
+    width: 850px;
+    height: 150px;
+    border: 1px solid #9999FF;
+}
+
+#areaAsk input{
+    width:50px;
+    display: block;
+    height:30px;
+    background-color: burlywood;
+    width: 70px; 
+}
+
+#areaQues{
+    margin: auto;
+    width: 1000px;
+    height: 500px;
+}
+
+#areaQues p1{
+    display: block;
+    width: 1000px;
+    height: 100px;
+    font-size: 25px;
+    margin-top:30px;
+    text-align: center;
+}
+#areaQues p2{
+    display: block;
+    font-size: 21px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#areaQues p3{
+    display: block;
+    font-size: 21px;
+    text-align: center;
+    margin-top:10px;
+}
+
+#areaQues button{
+    margin-top:30px;
+    width: 200px;
+    height: 40px;
+    margin-left: 400px; 
+}
+
+#areaQues button:hover{
+    background-color: #CCCCCC;
+    cursor: pointer; 
+}
