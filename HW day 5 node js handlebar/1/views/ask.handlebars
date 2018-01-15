@@ -1,0 +1,15 @@
+<div id="areaAsk" class="container"> 
+          <p>Hãy hỏi cộng đồng một câu hỏi đúng/sai hoặc có/không</p>
+          <form method="post" action="/questions/{{variable}}">
+                <textarea id="textArea" name="question" rows="6" class="form-controll" maxlength="200"></textarea>
+                <h5>Còn <span id="chars">200</span>/200 kí tự</h5>
+                <input type="submit" class="btn btn-primary" value="Gửi" name="send"/>
+          </form>
+</div>    
+
+<script>
+      $('textArea').keyup(function(){
+         var length=200-$('textArea').val().length;
+         $('#chars').text(length);
+      });
+</script>      
