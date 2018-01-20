@@ -1,0 +1,325 @@
+p1{
+    font-size: 27px;
+    font-weight: bold; 
+}
+
+.navbar img{
+    margin-top: -17px;
+    height: 50px;
+}
+
+.navbar #search {
+    float: right;
+    margin-top:9px;
+    width: 250px;
+}
+
+.navbar .search {
+    padding: 5px 0;
+    width: 230px;
+    height: 30px;
+    position: relative;
+    right: -950px;
+    float: left;
+    line-height: 22px;
+
+}
+
+.navbar .search input {
+        position: absolute;
+        width: 0px;
+        float: Left;
+        margin-left: 210px;
+        -webkit-transition: all 0.7s ease-in-out;
+        -moz-transition: all 0.7s ease-in-out;
+        -o-transition: all 0.7s ease-in-out;
+        transition: all 0.7s ease-in-out;
+        height: 30px;
+        line-height: 18px;
+        padding: 0 2px 0 2px;
+        border-radius:1px;
+    }
+
+.navbar .search:hover input, .search input:focus {
+            width: 200px;
+            margin-left: 0px;
+}
+
+.navbar .btn {
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+#navigation{
+    width:auto;
+}
+
+#navigation #searchArea{
+    margin-top:35px;
+    margin-left: 150px;
+}
+
+#navigation p{
+    font-size: 35px;
+    margin-left:12px;
+}
+#navigation .input-group input{
+    margin-top:10px;
+    margin-left:15px;
+    height: 70px;
+    width: 850px;
+}
+
+#navigation .input-group button{
+    height: 70px;
+    width: 70px;
+    margin-top:10px;
+}
+
+#content{
+    margin-top:150px;
+    margin-left: 120px;
+}
+#content #topographic{
+    margin-left:0px;
+}
+
+#content #topographic p1{
+    margin-left:14px;
+}
+
+
+#content #topographic #topographic1{
+    height: 80px;
+    width: 250px;
+    border: 1px solid;
+    position: absolute;
+    border: 1px solid #CCCCCC;
+    margin-top:10px;
+}
+
+
+#content #topographic #topographic2{
+    height: 80px;
+    width: 250px;
+    border: 1px solid #CCCCCC;
+    position: relative;
+    left: 300px;
+    margin-top:10px;
+}
+
+#content #topographic  p{
+    display: inline;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color:#333333;
+}
+#content #topographic  img{
+    margin-top:-1px;
+    margin-left:-1px;
+}
+
+#content #newPosition{
+    margin-top:40px;
+    margin-left:0px;
+}
+
+#content #newPosition #position{
+    margin-left: -20px;
+    margin-top:10px;
+}
+
+#content #newPosition  p{
+    display: inline;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333333;
+}
+p2{
+    color:#00CCCC;
+    font-size: 18px;
+    margin-top:30px;
+}
+
+#content #bestPosition{
+    margin-top:45px;
+    margin-left:0px;
+}
+
+#content #bestPosition #position{
+    margin-left: -20px;
+    margin-top:10px;
+}
+
+#content #bestPosition  p{
+    display: inline;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333333;
+}
+
+#footer{
+    background-color: black;
+    margin-top:70px;
+}
+
+#footer img{
+    margin-top:50px;
+    margin-left:95px;
+}
+
+#footer p{
+    display: inline;
+    color: white;
+    margin-left:70px;
+    font-size: 20px;
+}
+
+#footer i{
+    margin-left:20px;
+    position: relative;
+    top:40px;
+    right:140px;
+}
+
+#seaNavigation {
+    height: 60px;
+    border-bottom: 1px solid #DDDDDD;
+    border-top:1px solid#DDDDDD;
+    margin-top:50px;
+}
+
+#seaNavigation p1{
+    margin-left:100px;
+    line-height: 50px;
+    font-size: 35px;
+    font-weight: normal;
+    color: #333333;
+}
+
+#seaContent {
+
+    min-height: 600px
+}
+
+#seaContent p{
+    display: inline;
+}
+
+#seaContent #item{
+    margin-top: 40px;
+    border-bottom: 1px solid #CCFFFF;
+    height: 200px;
+}
+
+#seaNavigation {
+    height: 60px;
+    border-bottom: 1px solid #DDDDDD;
+    border-top:1px solid#DDDDDD;
+    margin-top:50px;
+}
+
+#seaNavigation p1{
+    margin-left:100px;
+    line-height: 50px;
+    font-size: 35px;
+    font-weight: normal;
+    color: #333333;
+}
+
+#seaContent {
+
+    min-height: 600px
+}
+
+#seaContent p{
+    display: inline;
+    opacity: initial;
+    transition: all .25s ease-in-out;
+    font-size: 20px;
+}
+
+#seaContent #item{
+    margin-top: 40px;
+    border-bottom: 1px solid #CCFFFF;
+    height: 200px;
+}
+
+
+#mountainNavigation {
+    height: 60px;
+    border-bottom: 1px solid #DDDDDD;
+    border-top:1px solid#DDDDDD;
+    margin-top:50px;
+}
+
+#mountainNavigation p1{
+    margin-left:100px;
+    line-height: 50px;
+    font-size: 35px;
+    font-weight: normal;
+    color: #333333;
+}
+
+#mountainContent {
+
+    min-height: 600px
+}
+
+#mountainContent p{
+    display: inline;
+}
+
+#mountainContent #item{
+    margin-top: 40px;
+    border-bottom: 1px solid #CCFFFF;
+    height: 200px;
+}
+
+#mountainNavigation {
+    height: 60px;
+    border-bottom: 1px solid #DDDDDD;
+    border-top:1px solid#DDDDDD;
+    margin-top:50px;
+}
+
+#mountainNavigation p1{
+    margin-left:100px;
+    line-height: 50px;
+    font-size: 35px;
+    font-weight: normal;
+    color: #333333;
+}
+
+#mountainContent {
+
+    min-height: 600px
+}
+
+#mountainContent p{
+    display: inline;
+}
+
+#mountainContent #item{
+    margin-top: 40px;
+    border-bottom: 1px solid #CCFFFF;
+    height: 200px;
+}
+
+.pagination{
+    margin-left:600px;
+}
+
+
+
+
+
+
+
+
