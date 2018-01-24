@@ -1,0 +1,55 @@
+<!doctype HTML>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">       
+        
+    </head>
+    <title>Hoang</title>
+    <body>
+        <form method="post" action="/" >
+            <div class="container">
+                <h1>AwesomeWebsite.com</h1>
+
+                <form method="post">
+                    <div class="form-group">
+                        <label for="usr">Username</label>
+                        <p class="btn-danger text-white" style="{{#unless error.requireUsername}}display: none;{{/unless}}" id="require-username-error">
+                            Username is required
+                        </p>
+                        <p class="btn-danger text-white" style="{{#unless error.errorUsername}}display: none;{{/unless}}" id="username-error">
+                            This username is already taken
+                        </p>
+                        <input type="text" class="form-control"  placeholder="Enter username" id="usr" name="username" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pwd">Email</label>
+                         <p class="btn-danger text-white" style="{{#unless error.requireEmail}}display: none;{{/unless}}" id="require-email-error">
+                            Email is required
+                        </p>
+                        <p class="btn-danger text-white" style="{{#unless error.errorEmail}}display: none;{{/unless}}" id="email-error">
+                            This email is already taken
+                        </p>
+                        <input type="email" class="form-control" placeholder="Enter email" id="ema" name="email" > 
+                    </div>
+            
+                <div class="checkbox">
+                    <p class="btn-danger text-white" style="{{#unless error.requireCheckbox}}display: none;{{/unless}}" id="checkbox-error">
+                         Please agree to selling your soul
+                    </p>
+                    <label><input type="checkbox" name="checkbox" >i agree to sell my soul</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+            </form> 
+                
+            </div>
+        </form>   
+     <script src="/js/web.js"></script>    
+    </body>
+    </html>
+
