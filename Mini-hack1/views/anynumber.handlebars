@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div>
+        <p>Điểm số:<span id="score" >0</span>/30</p>
+    </div>
+    <div>
+        <p>Câu hỏi số:<span id="number-question">1</span></p>
+    </div>
+    <div>
+        <span id="question">
+            Chọn một số từ 1 đến 10, và nhận số điểm tương ứng - nhưng chỉ khi có ít hơn 17% số người chơi cũng chọn số đó.
+        </span>
+    </div>
+    <div id="answer">
+        <div id="question10" style="display:block;">
+            <button name="but" value="1">1</button>
+            <button name="but" value="2">2</button>
+            <button name="but" value="3">3</button>
+            <button name="but" value="4">4</button>
+            <button name="but" value="5">5</button>
+            <button name="but" value="6">6</button>
+            <button name="but" value="7">7</button>
+            <button name="but" value="8">8</button>
+            <button name="but" value="9">9</button>
+            <button name="but" value="10">10</button>
+        </div>
+
+        <div id="question15" style="display:none;">
+            <button name="but" value="1">1</button>
+            <button name="but" value="2">2</button>
+            <button name="but" value="3">3</button>
+            <button name="but" value="4">4</button>
+            <button name="but" value="5">5</button>
+            <button name="but" value="6">6</button>
+            <button name="but" value="7">7</button>
+            <button name="but" value="8">8</button>
+            <button name="but" value="9">9</button>
+            <button name="but" value="10">10</button>
+            <button name="but" value="11">11</button>
+            <button name="but" value="12">12</button>
+            <button name="but" value="13">13</button>
+            <button name="but" value="14">14</button>
+            <button name="but" value="15">15</button>
+        </div>    
+
+        <div id="question2" style="display:none;">
+            <button name="but" value="4">4</button>
+            <button name="but" value="10">10</button>
+        </div>
+
+        <div id="question-text" style="display:none;">
+            <button name="but"><textarea></textarea>Submit</button>
+        </div>
+    </div>
+    
+    <script src="/js/ques.js"></script>
+    
+</body>
+</html>
