@@ -8,15 +8,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.engine("handlebars",handlebars());
 app.set("view engine","handlebars");
 
-app.get('/api/:numberquestion:/:score/:addScore',(req,res)=>{
-    numberQuestion=Number(req.params.numberQuestion);
-    score=Number(req.params.score);
-    addScore=Number(req.params.addScore);
+app.get('/api/:numberQuestion/:score/:addScore',(req,res)=>{
+    var numberQuestion=Number(req.params.numberQuestion);
+    var score=Number(req.params.score);
+    var addScore=Number(req.params.addScore);
     console.log(numberQuestion,score,addScore);
-    res.send({
+    if (numberQuestion<6){
+        res.send({
             score:score+addScore,
             numberQuestion:numberQuestion+1
-    });
+        });
+    }else{
+        res.send({
+            score:score+addScore,
+            numberQuestion:0
+        });
+    }
 })
 
 app.get('/',(req,res)=>{
