@@ -1,0 +1,35 @@
+
+
+#container{
+    width:1000px;
+    margin: auto;
+}
+
+#left{
+    width: 30%;
+    float: left;
+}
+
+#right{
+    width: 70%;
+    float: right;
+}
+
+#boxTitle{
+    border: 1px solid salmon;
+    padding: 5px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+#boxContent{
+    border: 1px solid salmon;
+    border-top:none;
+    padding: 5px;
+    text-align: center;
+}
+
+#listMessages{
+    height: 200px;
+    background-color: aquamarine;
+}

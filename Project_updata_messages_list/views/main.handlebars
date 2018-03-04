@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="/js/xuly.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="container" >
+        <div id="chatForm">
+            <div id="left">
+                <div id="boxTitle">
+                    Users Online
+                </div>
+
+                <div id="boxContent">
+                    ...
+                </div>
+            </div>
+
+            <div id="right">
+
+                <span id="currentUser"></span>
+                <a href="/logout"> 
+                       <input type="button" id="btnLogout" value="Logout"  />
+                </a>
+ 
+
+                <div id="listMessages">
+                </div>
+
+                <input type="text" id="txtMessages"/>
+                <input type="button" id="btnSend" value="Send"  />
+            </div>
+            
+        </div>
+    </div>    
+</body>
+</html>
