@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Socket.IO chat</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <button class="btn btn-success" id="buttonCheckSession">Check</button>
+    <input id="search" type="text" placeholder="search" name="search">
+    <div id="search_div" class="search_div">
+      <p id="setUsername"></p>
+    </div>
+    <div id="receiver_div" class="receiver_div">
+      <p>You are chatting with {{userId}}</p>
+    </div>
+    <div class="chat_div">
+      <div id="output"></div>
+      <div id="feedback"></div>
+
+      <input id="user" type="text" placeholder="user">
+      <input id="message" type="text" placeholder="message"> {{!--
+      <div id="user" class="user_div" contenteditable="true" data-placeholder="Username"></div> --}} {{!--
+      <div id="message" class="message_div" contenteditable="true" data-placeholder="Typing a message ..."></div> --}}
+    </div>
+  </div>
+
+  <script src="/lib/jquery.min.js"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/script.js"></script>
+</body>
+</html>

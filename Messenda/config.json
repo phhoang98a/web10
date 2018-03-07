@@ -1,0 +1,4 @@
+{
+    "port": 6969,
+    "connectionString": "mongodb://localhost:27017/messenda"
+}
