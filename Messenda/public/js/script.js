@@ -62,7 +62,7 @@ var searchUserId;
 $('#search').on('keyup', (e) => {
     e.preventDefault();
 
-    let searchInput = $('input[ name = search ]').val();
+    let searchInput = $('input[ name = search ]').val().trim();
 
     $.ajax({
         url: '/api/chat',
@@ -72,10 +72,21 @@ $('#search').on('keyup', (e) => {
         }
     }).done((result) => {
 
-        if (result) {
+        if ((searchInput==result.stringSearch) && (result.listName.length>0) && (searchInput!='')) {
             $('#search_div').css("display", "block");
-            $('#setUsername').text(result.username);
-            searchUserId = result._id;
+            $('#search_div').html("");
+            var amount=0;
+    
+            for (var i=0; i<result.listName.length;i++){
+                amount=amount+1;
+                $('#search_div').append(
+                    "<div id='"+ amount +"'>"+
+                        "<div class='userID' style='display: none;'>"+result.listID[i]+"</div>"+
+                        "<div class='userName' onclick='start(\"" + amount + "\")'>"+ result.listName[i] +"</div>"+
+                    "</div>"   
+                )
+            }
+
         } else {
             $('#search_div').css("display", "none");
         }
@@ -98,11 +109,20 @@ $('#search').on('keyup', (e) => {
 //     }
 
 
-$('#search_div').on('click', (e) => {
+//$('#search_div').on('click', (e) => {
+//    if (typeof searchUserId !== 'undefined') {
+//        window.location.replace(`/api/chat/${searchUserId}`);
+//    }
+//});
+
+function start(ids){
+    searchUserId=document.getElementById(ids).getElementsByClassName("userID")[0].innerHTML;
     if (typeof searchUserId !== 'undefined') {
         window.location.replace(`/api/chat/${searchUserId}`);
     }
-});
+}
+
+
 
 let checkChatApi = (url) => {
     var testUrl = '/api/chat';

@@ -70,9 +70,11 @@ passport.use(new GoogleStrategy(
                 return done(err);
             }else{
                 if (user) return done(null,user);
+                displayName = profile.displayName;
                 userSchema.create({
                     googleid:profile.id,
                     username:profile.displayName,
+                    usernameLowerCase:displayName.toLowerCase(),
                     email:profile.emails[0].value
                 },(err,newUser)=>{
                     if (err){

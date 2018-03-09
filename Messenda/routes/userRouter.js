@@ -77,23 +77,72 @@ const init = (io, app, sessionStore) => {
 
     Router.get('/api/chat/', (req, res) => {
         res.render('index');
-       
     });
 
     Router.post('/api/chat/', (req, res) => {
-        console.log(req.body.search);
-        userController.findByUsername(req.body.search, (err, data) => {
-            if (err) console.error(err);
-            res.json(data);
-            console.log(data);
-        });
+        var words_seach=[];
+        var listSearch={
+            "stringSearch":req.body.search,
+            "del":[],
+            "listName":[],
+            "listID":[]
+        };
+        var list={
+            "stringSearch":req.body.search,
+            "del":[],
+            "listName":[],
+            "listID":[]
+        };
+        var word="";
+        var string_search=req.body.search+' ';
+
+        for (let i=0; i<string_search.length;i++)
+        if (string_search[i]==' ')
+        {
+            words_seach.push(word);
+            word="";
+        }else{
+            word=word+string_search[i];
+        }
+
+        userController.getAll((err,data)=>{
+            if (err){
+                console.log(err);
+            }else{
+                data.forEach(function(user){
+                    listSearch.del.push('0');
+                    listSearch.listName.push(user.usernameLowerCase);
+                    listSearch.listID.push(user._id);
+                })
+
+
+                for (let i=0; i<words_seach.length;i++)
+                for (let j=0; j<listSearch.listName.length;j++)
+                if (listSearch.del[j]=="0"){
+                    if (listSearch.listName[j].search(words_seach[i])==-1){
+                        listSearch.del[j]="1";
+                    }
+                }
+                 
+                for (var i=0; i<listSearch.listName.length;i++)
+                if (listSearch.del[i]=="0")
+                {
+                    list.del.push("0");
+                    list.listName.push(listSearch.listName[i]);
+                    list.listID.push(listSearch.listID[i]);
+                }
+                
+                res.json(list);
+            }
+        })
+
     });
     var users = {};
     
     Router.get('/api/chat/:id', (req, res) => {
         var searchUserId ='';
         searchUserId = req.params.id;
-        users[req.session.user._id] = searchUserId;
+        users[req.session.user._id] = searchUserId; 
         res.render('index', {
             userId: req.params.id
         });

@@ -5,6 +5,7 @@ const SALT = 10;
 
 const UserSchema = new Schema({
     username: { type: String, lowercase: true, trim: true, required: true, index: { unique: true } },
+    usernameLowerCase:{ type: String, lowercase: true, trim: true, required: true, index: { unique: true } },
     email:{ type: String, required: true },
     googleid:{ type: String, required: true },
     socketid: { type: String },
