@@ -94,7 +94,7 @@ const init = (io, app, sessionStore) => {
             "listID":[]
         };
         var word="";
-        var string_search=req.body.search+' ';
+        var string_search=req.body.search.toLowerCase()+' ';
 
         for (let i=0; i<string_search.length;i++)
         if (string_search[i]==' ')
