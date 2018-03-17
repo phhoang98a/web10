@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const Router = express.Router();
 const cookie = require('cookie');
@@ -5,6 +7,7 @@ const cookieParser = require('cookie-parser');
 
 const userSchema=require('../models/userModel');
 const userController = require('../controller/userController');
+const messageController= require('../controller/messageController');
 const isAuthen = userController.isAuthen;
 
 const init = (io, app, sessionStore) => {
@@ -79,17 +82,48 @@ const init = (io, app, sessionStore) => {
         res.render('index');
     });
 
+    Router.get('/api/chat/:id', (req, res) => {
+        searchUserId = req.params.id;
+        searchUserEmail=req.params.id;
+        users[req.session.user._id] = searchUserId; 
+        messageController.loadMessages(req.session.user._id,searchUserId,function(err,data){
+            if (err){
+                console.log(err);
+            }else{
+
+                if ( !data ){
+                    res.render('index', {
+                        userId: req.params.id
+                    });
+                }else{
+                    var listMessage=[];
+                    for (var i=0; i<data.conversation.length;i++){
+                        listMessage.push(data.conversation[i].messages);
+                    }
+                    res.render('index', {
+                        userId: req.params.id,
+                        listMessage:listMessage
+                    });
+                }
+            }
+        })
+    }); 
+
     Router.post('/api/chat/', (req, res) => {
         var words_seach=[];
         var listSearch={
             "stringSearch":req.body.search,
             "del":[],
+            "listNameLowerCase":[],
+            "email":[],
             "listName":[],
             "listID":[]
         };
         var list={
             "stringSearch":req.body.search,
             "del":[],
+            "listNameLowerCase":[],
+            "email":[],
             "listName":[],
             "listID":[]
         };
@@ -111,23 +145,27 @@ const init = (io, app, sessionStore) => {
             }else{
                 data.forEach(function(user){
                     listSearch.del.push('0');
-                    listSearch.listName.push(user.usernameLowerCase);
+                    listSearch.listNameLowerCase.push(user.usernameLowerCase);
+                    listSearch.email.push(user.email);
+                    listSearch.listName.push(user.username);
                     listSearch.listID.push(user._id);
                 })
 
 
                 for (let i=0; i<words_seach.length;i++)
-                for (let j=0; j<listSearch.listName.length;j++)
+                for (let j=0; j<listSearch.listNameLowerCase.length;j++)
                 if (listSearch.del[j]=="0"){
-                    if (listSearch.listName[j].search(words_seach[i])==-1){
+                    if (listSearch.listNameLowerCase[j].search(words_seach[i])==-1){
                         listSearch.del[j]="1";
                     }
                 }
                  
-                for (var i=0; i<listSearch.listName.length;i++)
+                for (var i=0; i<listSearch.listNameLowerCase.length;i++)
                 if (listSearch.del[i]=="0")
                 {
                     list.del.push("0");
+                    list.listNameLowerCase.push(listSearch.listNameLowerCase[i]);
+                    list.email.push(listSearch.email[i]);
                     list.listName.push(listSearch.listName[i]);
                     list.listID.push(listSearch.listID[i]);
                 }
@@ -138,25 +176,15 @@ const init = (io, app, sessionStore) => {
 
     });
     var users = {};
+    var searchUserId ='';
     
-    Router.get('/api/chat/:id', (req, res) => {
-        var searchUserId ='';
-        searchUserId = req.params.id;
-        users[req.session.user._id] = searchUserId; 
-        res.render('index', {
-            userId: req.params.id
-        });
-    });
 
     var clients = {};
 
     io.use(function (socket, next) {
         if (socket.request.headers.cookie) {
             socket.request.cookie = cookie.parse(cookieParser.signedCookie(socket.request.headers.cookie, 'secret'));
-
-            // console.log('cookie header ( %s )', JSON.stringify(socket.request.headers.cookie));
             var cookies = cookie.parse(socket.request.headers.cookie);
-            // console.log('cookies parsed ( %s )', JSON.stringify(cookies));
             if (!cookies['cookiename']) {
                 return next(new Error('Missing cookie ' + 'cookiename'));
             }
@@ -164,7 +192,6 @@ const init = (io, app, sessionStore) => {
             if (!sid) {
                 return next(new Error('Cookie signature is not valid'));
             }
-            // console.log('session ID ( %s )', sid);
             socket.request.sid = sid;
             sessionStore.get(sid, function (err, session) {
                 if (err) return next(err);
@@ -176,11 +203,12 @@ const init = (io, app, sessionStore) => {
         else next();
     });
 
-    io.on('connection', (socket) => {
-      
 
+    io.on('connection', (socket) => {
+
+    
         if(typeof socket.request.session.user.username !== 'undefined'){
-            socket.emit('username', socket.request.session.user.username);
+            socket.emit('username', socket.request.session.user);
         }
 
         socket.on('url', (data) => {
@@ -188,14 +216,31 @@ const init = (io, app, sessionStore) => {
                 if (typeof socket.request.session.user._id !== 'undefined') {
                     clients[socket.request.session.user._id] = socket.id;
                 }
-
-                // console.log(`api/chat: ${socket.id}`);
             }
         });
         socket.on('send message', (data) => {
 
             if (typeof socket.request.session !== 'undefined' &&
                 typeof users !== 'undefined') {
+
+                message= socket.request.session.user.username+':'+data.message;   
+                
+                messageController.update(socket.request.session.user._id,users[socket.request.session.user._id],message,(err,data)=>{
+                    if (err){
+                        console.log(err);
+                    }else{
+                        console.log('1');
+                    }
+                })
+
+                messageController.update(users[socket.request.session.user._id],socket.request.session.user._id,message,(err,data)=>{
+                    if (err){
+                        console.log(err);
+                    }else{
+                        console.log('1');
+                    }
+                })
+
                 io.sockets.connected[clients[users[socket.request.session.user._id]]].emit('private chat', {
                     user: socket.request.session.user.username,
                     message: data.message

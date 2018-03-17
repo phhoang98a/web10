@@ -1,4 +1,5 @@
 var socket = io();
+//const messageModel = require('../models/messageModel');
 
 
 $('#message').on('keypress', (e) => {
@@ -7,16 +8,6 @@ $('#message').on('keypress', (e) => {
         var message = $("#message").val();
         var output = $('#output').val();
         var feedback = $('#feedback').val();
-
-        // socket.emit('chat', {
-        //     user: user,
-        //     message: message
-        // });
-        // console.log(message);
-        // socket.on('message')
-
-        // let room = 'chatRoom1';
-        // socket.emit('subcribe', room);
 
         socket.emit('send message', {
             message: message
@@ -39,6 +30,7 @@ socket.on('username', (data) => {
 socket.on('private chat', (msg) => {
     feedback.innerHTML = '';
     output.innerHTML += '<p><strong>' + msg.user + ': </strong>' + msg.message + '</p>';
+
 });
 
 socket.on('typing', (data) => {
@@ -81,12 +73,12 @@ $('#search').on('keyup', (e) => {
                 amount=amount+1;
                 $('#search_div').append(
                     "<div id='"+ amount +"'>"+
-                        "<div class='userID' style='display: none;'>"+result.listID[i]+"</div>"+
+                        "<div class='userEmail' style='display: none;' >"+result.email[i]+"</div>"+                     
+                        "<div class='userID'  style='display: none;' >"+result.listID[i]+"</div>"+
                         "<div class='userName' onclick='start(\"" + amount + "\")'>"+ result.listName[i] +"</div>"+
                     "</div>"   
                 )
             }
-
         } else {
             $('#search_div').css("display", "none");
         }
@@ -95,25 +87,6 @@ $('#search').on('keyup', (e) => {
     });
 });
 
-// let checkSearchApi = (currentUserId, searchUserId) => {
-//         if (currentUserId == searchUserId) {
-//             console.log('chay vao if');
-//             $('#search_div').click(false);
-//             $('#search_div').css('cursor', 'default');
-//         } else {
-//             console.log('chay vao else');
-//             $('#search_div').click(true);
-//             $('#search_div').css('cursor', 'pointer');
-
-//         }
-//     }
-
-
-//$('#search_div').on('click', (e) => {
-//    if (typeof searchUserId !== 'undefined') {
-//        window.location.replace(`/api/chat/${searchUserId}`);
-//    }
-//});
 
 function start(ids){
     searchUserId=document.getElementById(ids).getElementsByClassName("userID")[0].innerHTML;
@@ -132,9 +105,4 @@ let checkChatApi = (url) => {
 $(document).ready(() => {
     var url = window.location.href;
     checkChatApi(url);
-    // if (typeof currentUserId !== 'undefined' &&
-    //     typeof searchUserId !== 'undefined') {
-    //     console.log(currentUserId, searchUserId);
-    //     checkChatApi(currentUserId, searchUserId);
-    // }
 });

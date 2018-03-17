@@ -2,13 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const MessagesSchema = new mongoose.Schema({
-    users: [
-        {
-            sender: { type: mongoose.Schema.Types.ObjectId },
-            receiver: { type: mongoose.Schema.Types.ObjectId }
-        }
-    ],
-    messages: [
+    users: {
+        sender: { type: mongoose.Schema.Types.ObjectId },
+        receiver: { type: mongoose.Schema.Types.ObjectId }
+    },
+    conversation: [
         {
             messages: { type: String },
             seen: { type: Boolean, default: false }
@@ -18,5 +16,5 @@ const MessagesSchema = new mongoose.Schema({
         timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
     });
 
-mongoose.model('Messages', MessagesSchema);
+module.exports=mongoose.model('Messages', MessagesSchema);
 
