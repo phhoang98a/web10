@@ -64,17 +64,18 @@ passport.use(new GoogleStrategy(
     },
     (accessToken, refreshToken, profile,done)=>{
         emailUser=profile.emails[0].value;
+        console.log(profile);
         userSchema.findOne({googleid:profile.id},(err,user)=>{
             if (err){
                 return done(err);
             }else{
                 if (user) return done(null,user);
-                displayName = profile.displayName;
                 userSchema.create({
                     googleid:profile.id,
                     username:profile.displayName,
-                    usernameLowerCase:displayName.toLowerCase(),    
-                    email:profile.emails[0].value
+                    usernameLowerCase:profile.displayName.toLowerCase(),    
+                    email:profile.emails[0].value,
+                    urlPicture:profile.photos[0].value
                 },(err,newUser)=>{
                     if (err){
                         return done(err);

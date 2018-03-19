@@ -82,28 +82,54 @@ const init = (io, app, sessionStore) => {
         res.render('index');
     });
 
-    Router.get('/api/chat/:id', (req, res) => {
+    Router.get('/api/chat/:id/:name', (req, res) => {
         searchUserId = req.params.id;
-        searchUserEmail=req.params.id;
+        searchUserName=req.params.name;
+        console.log(searchUserName);
         users[req.session.user._id] = searchUserId; 
-        messageController.loadMessages(req.session.user._id,searchUserId,function(err,data){
+        messageController.loadMessages(req.session.user._id,searchUserId,function(err,data1){
             if (err){
                 console.log(err);
             }else{
-
-                if ( !data ){
+                if ( !data1 ){
                     res.render('index', {
                         userId: req.params.id
                     });
                 }else{
-                    var listMessage=[];
-                    for (var i=0; i<data.conversation.length;i++){
-                        listMessage.push(data.conversation[i].messages);
-                    }
-                    res.render('index', {
-                        userId: req.params.id,
-                        listMessage:listMessage
-                    });
+                    messageController.loadMessages(searchUserId,req.session.user._id,function(err,data2){
+                       if (err){
+                           console.log(err)
+                        }else{
+                            var listMessage=[];
+                            for (var i=0; i<data1.conversation.length;i++){
+                                var object={
+                                    sender:req.session.user.username,
+                                    content:data1.conversation[i].messages,
+                                    time:Date.parse(data1.conversation[i].time)/1000
+                                }
+                                listMessage.push(object);
+                            }
+                            for (var i=0; i<data2.conversation.length;i++){
+                                var object={
+                                    sender:searchUserName,
+                                    content:data2.conversation[i].messages,
+                                    time:Date.parse(data2.conversation[i].time)/1000
+                                }
+                                listMessage.push(object);
+                            }
+                            listMessage.sort(function(x, y){
+                                return x.time - y.time;
+                            })
+                            var oldMessage=[]
+                            for (var i=0; i<listMessage.length;i++){
+                                oldMessage.push(listMessage[i].sender+':'+listMessage[i].content);
+                            }
+                            res.render('index', {
+                                userId: req.params.name,
+                                listMessage:oldMessage
+                            });
+                        }
+                    })
                 }
             }
         })
@@ -117,7 +143,8 @@ const init = (io, app, sessionStore) => {
             "listNameLowerCase":[],
             "email":[],
             "listName":[],
-            "listID":[]
+            "listID":[],
+            "url":[]
         };
         var list={
             "stringSearch":req.body.search,
@@ -125,7 +152,8 @@ const init = (io, app, sessionStore) => {
             "listNameLowerCase":[],
             "email":[],
             "listName":[],
-            "listID":[]
+            "listID":[],
+            "url":[]
         };
         var word="";
         var string_search=req.body.search.toLowerCase()+' ';
@@ -149,6 +177,7 @@ const init = (io, app, sessionStore) => {
                     listSearch.email.push(user.email);
                     listSearch.listName.push(user.username);
                     listSearch.listID.push(user._id);
+                    listSearch.url.push(user.urlPicture )
                 })
 
 
@@ -168,6 +197,7 @@ const init = (io, app, sessionStore) => {
                     list.email.push(listSearch.email[i]);
                     list.listName.push(listSearch.listName[i]);
                     list.listID.push(listSearch.listID[i]);
+                    list.url.push(listSearch.url[i])
                 }
                 
                 res.json(list);
@@ -223,17 +253,9 @@ const init = (io, app, sessionStore) => {
             if (typeof socket.request.session !== 'undefined' &&
                 typeof users !== 'undefined') {
 
-                message= socket.request.session.user.username+':'+data.message;   
+                message= data.message;   
                 
                 messageController.update(socket.request.session.user._id,users[socket.request.session.user._id],message,(err,data)=>{
-                    if (err){
-                        console.log(err);
-                    }else{
-                        console.log('1');
-                    }
-                })
-
-                messageController.update(users[socket.request.session.user._id],socket.request.session.user._id,message,(err,data)=>{
                     if (err){
                         console.log(err);
                     }else{

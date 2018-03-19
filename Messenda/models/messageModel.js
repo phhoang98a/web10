@@ -9,7 +9,8 @@ const MessagesSchema = new mongoose.Schema({
     conversation: [
         {
             messages: { type: String },
-            seen: { type: Boolean, default: false }
+            seen: { type: Boolean, default: false },
+            time : { type : Date, default: Date.now }
         }
     ]
 }, {

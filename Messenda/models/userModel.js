@@ -9,6 +9,7 @@ const UserSchema = new Schema({
     email:{ type: String, required: true },
     googleid:{ type: String, required: true },
     socketid: { type: String },
+    urlPicture: { type: String },
     Conversations: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Conversations' }]
 }, {
         timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }

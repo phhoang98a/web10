@@ -73,6 +73,7 @@ $('#search').on('keyup', (e) => {
                 amount=amount+1;
                 $('#search_div').append(
                     "<div id='"+ amount +"'>"+
+                        "<img src="+result.url[i]+">"+
                         "<div class='userEmail' style='display: none;' >"+result.email[i]+"</div>"+                     
                         "<div class='userID'  style='display: none;' >"+result.listID[i]+"</div>"+
                         "<div class='userName' onclick='start(\"" + amount + "\")'>"+ result.listName[i] +"</div>"+
@@ -90,8 +91,9 @@ $('#search').on('keyup', (e) => {
 
 function start(ids){
     searchUserId=document.getElementById(ids).getElementsByClassName("userID")[0].innerHTML;
+    searchUserName=document.getElementById(ids).getElementsByClassName("userName")[0].innerHTML;
     if (typeof searchUserId !== 'undefined') {
-        window.location.replace(`/api/chat/${searchUserId}`);
+        window.location.replace(`/api/chat/${searchUserId}/${searchUserName}`);
     }
 }
 

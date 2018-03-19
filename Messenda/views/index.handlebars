@@ -20,14 +20,14 @@
     </div>
     <div class="chat_div">
       <div id="output">
-        {{listMessage}}
+        {{#each listMessage}}
+          <p>{{this}}</p>
+        {{/each}}
       </div>
       <div id="feedback"></div>
 
       <input id="user" type="text" placeholder="user">
-      <input id="message" type="text" placeholder="message"> {{!--
-      <div id="user" class="user_div" contenteditable="true" data-placeholder="Username"></div> --}} {{!--
-      <div id="message" class="message_div" contenteditable="true" data-placeholder="Typing a message ..."></div> --}}
+      <input id="message" type="text" placeholder="message"> 
     </div>
   </div>
 
